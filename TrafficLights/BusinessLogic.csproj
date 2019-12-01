@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RulesManager.cs" />
     <Compile Include="TrafficLight.cs" />
+    <Compile Include="TrafficLightManager.cs" />
     <Compile Include="TrafficLightStates.cs" />
   </ItemGroup>
   <ItemGroup>

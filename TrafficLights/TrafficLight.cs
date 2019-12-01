@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,30 +10,12 @@ using System.Timers;
 
 namespace TrafficLights
 {
-    class TrafficLight
+    public class TrafficLight 
     {
-        private int CurrentState { get; set; }
-        private int DefaultState { get; set; }
-        private RulesManager Rules { get; set; }
+        //  The current state of the traffic light during the change cycle
+        public int CurrentState { get; set; }
 
-        public TrafficLight(RulesManager rules)
-        {
-            this.Rules = rules;
-            DefaultState = rules.DefaultState;
-        }
-
-        internal void Change() 
-        {
-            foreach (var state in Rules.States)
-            {
-                CurrentState = state.Key;
-                Console.WriteLine(CurrentState);
-                Thread.Sleep(state.Value);
-            }
-
-            CurrentState = DefaultState;
-            Console.WriteLine(CurrentState);
-            Console.ReadLine();
-        }        
+        //  The default state of the traffic light when not changing
+        public int DefaultState { get; set; }       
     }
 }

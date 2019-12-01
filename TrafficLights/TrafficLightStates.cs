@@ -10,7 +10,8 @@ namespace TrafficLights
     {
         stop,
         getReady,
-        go, 
+        go,
+        revertingToDefault,
         off,
     }
 }
