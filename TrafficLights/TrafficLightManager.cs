@@ -10,7 +10,7 @@ using System.Timers;
 namespace TrafficLights
 {
     public class TrafficLightManager
-    {  
+    {
 
         public TrafficLight trafficLight { get; set; }
         public RulesManager rulesManager { get; set; }
@@ -27,12 +27,9 @@ namespace TrafficLights
         //  Changes the CUrrentState of the traffic light by setting it to the next item in States list
         public void ChangeTrafficLightState()
         {
-            if (index < rulesManager.States.Count)
-            {
-                trafficLight.CurrentState = rulesManager.States.ElementAt(index).Key;
-                index++;
-            }
-            else ChangeCycleEnded = true;
+            if (index < rulesManager.States.Count) trafficLight.CurrentState = rulesManager.States.ElementAt(index).Key;
+            if (index == rulesManager.States.Count - 1) ChangeCycleEnded = true;
+            index++;
         }
     }
 }

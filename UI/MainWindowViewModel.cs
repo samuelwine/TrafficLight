@@ -14,7 +14,7 @@ namespace UI
     {
         public TrafficLight trafficLight { get; set; }
         public TrafficLightManager trafficLightManager { get; set; }
-        
+
         //  Color property for top light
         private Brush top;
         public Brush Top
@@ -49,7 +49,7 @@ namespace UI
                 lower = value;
                 NotifyPropertyChanged();
             }
-        }       
+        }
 
 
         public MainWindowViewModel()
@@ -62,7 +62,7 @@ namespace UI
 
             this.trafficLight = new TrafficLight();
             this.trafficLightManager = new TrafficLightManager(trafficLight, rules);
-        } 
+        }
 
         //  Sets the colors of the lights based on the current state
         public void SetColors()
@@ -114,17 +114,18 @@ namespace UI
         //  Event handler for the timer tick-event
         private void timer_Tick(object sender, EventArgs e)
         {
-            DispatcherTimer senderTimer = (DispatcherTimer)sender;         
-            
+            DispatcherTimer senderTimer = (DispatcherTimer)sender;
+
             if (trafficLightManager.ChangeCycleEnded)
             {
                 senderTimer.Stop();
                 trafficLight.CurrentState = trafficLight.DefaultState;
-                SetColors();                
+                SetColors();
                 return;
             }
+
             trafficLightManager.ChangeTrafficLightState();
-            SetColors();                       
+            SetColors();
         }
 
         //  Event and EventHandler for updating bound properties
