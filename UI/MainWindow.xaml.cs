@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace UI
 {
@@ -21,13 +9,24 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel _viewModel;
-        
+        List<TrafficLightUserControlViewModel> trafficLights;        
+
         public MainWindow()
         {
             InitializeComponent();
-            _viewModel = (MainWindowViewModel)DataContext;
-            _viewModel.StartTrafficLightChangeCycle();            
+            trafficLights = new List<TrafficLightUserControlViewModel>()
+            {
+                (TrafficLightUserControlViewModel)trafficLight1.DataContext,
+                (TrafficLightUserControlViewModel)trafficLight2.DataContext,
+            };           
+
+            Parallel.ForEach(trafficLights, trafficLight =>
+            {
+                trafficLight.trafficLightManager.StartTrafficLightChangeCycle();
+            });
+            
+
+
         }
     }
 }

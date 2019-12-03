@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="UI.TrafficLightUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"        
+        mc:Ignorable="d"
+        Height="320" Width="120">
+    <UserControl.DataContext>
+        <local:TrafficLightUserControlViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Height="300" Width="110">
+            <StackPanel>
+                <Ellipse Height="100" Width="100" Stroke="Black" StrokeThickness="2" Fill="{Binding Top, Mode=TwoWay}"/>
+                <Ellipse Height="100" Width="100" Stroke="Black" StrokeThickness="2" Fill="{Binding Middle, Mode=TwoWay}"/>
+                <Ellipse Height="100" Width="100" Stroke="Black" StrokeThickness="2" Fill="{Binding Lower, Mode=TwoWay, PresentationTraceSources.TraceLevel=High}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

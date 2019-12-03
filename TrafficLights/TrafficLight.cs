@@ -10,12 +10,29 @@ using System.Timers;
 
 namespace TrafficLights
 {
-    public class TrafficLight 
+    public class TrafficLight : INotifyPropertyChanged
     {
         //  The current state of the traffic light during the change cycle
-        public int CurrentState { get; set; }
+        private int currentState;
+        public int CurrentState
+        {
+            get { return currentState; }
+            set
+            {
+                currentState = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
         //  The default state of the traffic light when not changing
-        public int DefaultState { get; set; }       
+        public int DefaultState { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
